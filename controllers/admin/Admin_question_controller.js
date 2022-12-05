@@ -80,6 +80,7 @@ app.get("/admin/questions/:num", SessionService.verifySessionMiddleware(role, "a
         })
         .send(csv);
     }
+    
     return res.render("admin/Questions", viewModel);
   } catch (error) {
     console.error(error);
