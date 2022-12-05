@@ -806,9 +806,9 @@ async function nextQuestion(goBack, goBackFromResponse, fromDependedOn) {
             $("#page4 .customImgRow .imgRowInner p").append(`${responseHeader}`);
             responseOnGoing = true;
             hasNoResponse = false;
-            // closeResponseTimeout = setTimeout(async () => {
-            //   closeResponse();
-            // }, closeResponseTimeoutCounter);
+            closeResponseTimeout = setTimeout(async () => {
+              closeResponse();
+            }, closeResponseTimeoutCounter);
           }
         } else if (apiQues.answers && apiQues.answers[0].responseBody) {
           $("#page3").css("display", "none");
@@ -820,7 +820,7 @@ async function nextQuestion(goBack, goBackFromResponse, fromDependedOn) {
           hasNoResponse = false;
           closeResponseTimeout = setTimeout(async () => {
             closeResponse();
-          }, closeResponseTimeoutCounter);
+          }, 5000);
         }
       } else if (apiQues.type == 3 && apiQues.id == 2 && age) {
         if (age < 25) age = "<25";
@@ -912,7 +912,7 @@ function showResponse(responseHead, responseBody, weatherQuestion) {
   }
   closeResponseTimeout = setTimeout(() => {
     closeResponse();
-  }, closeResponseTimeoutCounter);
+  }, 5000);
 }
 
 // function to close response page
