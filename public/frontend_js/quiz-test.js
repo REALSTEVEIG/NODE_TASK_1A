@@ -1217,6 +1217,32 @@ async function askQuestion(totalQuizQuestions, counter, fromBack) {
       }
     });
 
+    //Add none of above option to class answer inner
+    $("#typeSelection .answerInner").append(`
+    <div class="selectionOptions">
+      <button id="none" data-val="none" data-id="none" class="selectionBtns selectionBtn">
+        None of the Above
+      </button>
+    </div>
+    `);
+
+    //Added checkAllergie to selectionBtn answer class except none
+    $(".selectionBtn").on("click", (e) => {
+      return checkAllergie(e.target.dataset.val);
+    });
+
+    //when none of the above option is selected
+    $("#none").on("click", () => {
+
+      //set the selections to null and handleNoneOfTheAbove() is called
+      if (alreadyAnswered) {
+        alreadyAnswered.answer = null
+      } else {
+        alreadyAnswered = null
+      }
+      handleNoneOfTheAbove();
+    });
+
     if (alreadyAnswered && alreadyAnswered.answer) {
       if (Array.isArray(alreadyAnswered.answer)) {
         alreadyAnswered.answer.forEach((answer) => {
