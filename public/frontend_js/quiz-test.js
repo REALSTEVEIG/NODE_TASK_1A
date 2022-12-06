@@ -1202,7 +1202,7 @@ async function askQuestion(totalQuizQuestions, counter, fromBack) {
       $("#myRange").trigger("input", [true]);
     }
   } // type 6 ends here
-  else if (type == 7) {
+else if (type == 7) {
     $("#typeSelection .answerInner").html("");
     $("#typeSelection").css("display", "block");
     currentActiveAnswerType = "typeSelection";
